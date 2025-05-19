@@ -1,0 +1,2083 @@
+[
+  {
+    "input": "deployment of a statefulset named statefulset-1 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-2 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-9 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-10 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-11 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-18 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-19 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-20 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-27 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-28 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-29 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-36 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-37 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-38 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-45 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-46 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-47 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-54 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-55 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-56 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-63 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-64 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-65 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-72 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-73 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-74 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-81 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-82 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-83 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-90 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-91 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-92 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-99 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-100 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-101 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-108 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-109 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-110 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-117 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-118 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-119 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-126 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-127 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-128 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-135 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-136 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-137 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-144 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-145 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-146 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-153 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-154 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-155 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-162 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-163 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-164 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-171 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-172 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-173 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-180 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-181 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-182 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-189 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-190 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-191 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-198 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-199 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-200 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-207 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-208 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-209 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-216 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-217 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-218 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-225 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-226 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-227 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-234 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-235 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-236 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-243 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-244 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-245 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-252 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-253 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-254 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-261 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-262 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-263 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-270 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-271 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-272 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-279 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-280 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-281 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-288 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-289 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-290 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-297 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-298 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-299 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-306 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-307 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-308 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-315 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-316 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-317 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-324 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-325 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-326 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-333 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-334 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-335 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-342 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-343 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-344 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-351 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-352 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-353 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-360 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-361 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-362 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-369 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-370 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-371 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-378 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-379 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-380 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-387 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-388 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-389 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-396 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-397 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-398 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-405 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-406 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-407 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-414 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-415 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-416 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-423 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-424 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-425 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-432 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-433 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-434 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-441 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-442 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-443 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-450 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-451 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-452 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-459 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-460 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-461 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-468 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-469 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-470 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-477 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-478 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-479 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-486 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-487 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-488 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {
+    "input": "get detailed description of node worker-node",
+    "output": "kubectl describe node worker-node"
+  },
+  {
+    "input": "check the health of all control plane components",
+    "output": "kubectl get componentstatuses"
+  },
+  {
+    "input": "install the cert-manager operator via Helm using the jetstack repo",
+    "output": "helm repo add jetstack https://charts.jetstack.io\nhelm repo update\nhelm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true"
+  },
+  {
+    "input": "create a storageclass named named-495 fast-sc using provisioner kubernetes.io/aws-ebs",
+    "output": "kubectl apply -f - <<EOF\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: fast-sc\nprovisioner: kubernetes.io/aws-ebs\nvolumeBindingMode: WaitForFirstConsumer\nEOF"
+  },
+  {
+    "input": "deployment of a statefulset named statefulset-496 db-stateful using mysql:5.7 image with 3 replicas",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: db-stateful\nspec:\n  serviceName: \"mysql\"\n  replicas: 3\n  selector:\n    matchLabels:\n      app: db-stateful\n  template:\n    metadata:\n      labels:\n        app: db-stateful\n    spec:\n      containers:\n      - name: mysql\n        image: mysql:5.7\n        env:\n        - name: MYSQL_ROOT_PASSWORD\n          value: password\n        ports:\n        - containerPort: 3306\nEOF"
+  },
+  {
+    "input": "create a daemonset named named-497 log-collector using fluentd image to run on all nodes",
+    "output": "kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: log-collector\nspec:\n  selector:\n    matchLabels:\n      app: log-collector\n  template:\n    metadata:\n      labels:\n        app: log-collector\n    spec:\n      containers:\n      - name: fluentd\n        image: fluent/fluentd\n        ports:\n        - containerPort: 24224\nEOF"
+  },
+  {
+    "input": "show all events in the cluster sorted by lastTimestamp",
+    "output": "kubectl get events --sort-by='.lastTimestamp'"
+  },
+  {
+    "input": "tail logs of the pod nginx-pod with 100 lines",
+    "output": "kubectl logs nginx-pod --tail=100"
+  },
+  {
+    "input": "open bash shell in pod db-stateful-0",
+    "output": "kubectl exec -it db-stateful-0 -- /bin/bash"
+  },
+  {"input":"give me a command to list all nodes in the cluster","output":"kubectl get nodes"},
+  {"input":"create a deployment named nginx-deployment with the nginx image","output":"kubectl create deployment nginx-deployment --image=nginx"},
+  {"input":"list all deployments","output":"kubectl get deployments"},
+  {"input":"list all pods","output":"kubectl get pods"},
+  {"input":"describe the pod named my-pod","output":"kubectl describe pod my-pod"},
+  {"input":"expose deployment nginx-deployment on port 80 as a NodePort service","output":"kubectl expose deployment nginx-deployment --port=80 --type=NodePort"},
+  {"input":"list all services","output":"kubectl get services"},
+  {"input":"open the service for nginx-deployment in my browser via Minikube","output":"minikube service nginx-deployment"},
+  {"input":"scale deployment nginx-deployment to 3 replicas","output":"kubectl scale deployment nginx-deployment --replicas=3"},
+  {"input":"delete the deployment named nginx-deployment","output":"kubectl delete deployment nginx-deployment"},
+  {"input":"create a ClusterIP service named nginx-service mapping TCP 80 to 80","output":"kubectl create service clusterip nginx-service --tcp=80:80"},
+  {"input":"get details of the service named nginx-service","output":"kubectl get service nginx-service"},
+  {"input":"describe the service nginx-service","output":"kubectl describe service nginx-service"},
+  {"input":"list all endpoints","output":"kubectl get endpoints"},
+  {"input":"forward port 80 of service nginx-service to localhost 8080","output":"kubectl port-forward service/nginx-service 8080:80"},
+  {"input":"define a 1Gi PersistentVolume named mysql-pv on hostPath /mnt/data","output":"kubectl apply -f - <<EOF\napiVersion: v1\nkind: PersistentVolume\nmetadata:\n  name: mysql-pv\nspec:\n  capacity:\n    storage: 1Gi\n  accessModes:\n    - ReadWriteOnce\n  hostPath:\n    path: \"/mnt/data\"\nEOF"},
+  {"input":"create a 1Gi PersistentVolumeClaim named mysql-pvc","output":"kubectl apply -f - <<EOF\napiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: mysql-pvc\nspec:\n  accessModes:\n    - ReadWriteOnce\n  resources:\n    requests:\n      storage: 1Gi\nEOF"},
+  {"input":"run a mysql:5.6 pod named mysql using the mysql-pvc claim","output":"kubectl apply -f - <<EOF\napiVersion: v1\nkind: Pod\nmetadata:\n  name: mysql\nspec:\n  containers:\n  - name: mysql\n    image: mysql:5.6\n    env:\n    - name: MYSQL_ROOT_PASSWORD\n      value: password\n    ports:\n    - containerPort: 3306\n    volumeMounts:\n    - name: mysql-storage\n      mountPath: /var/lib/mysql\n  volumes:\n  - name: mysql-storage\n    persistentVolumeClaim:\n      claimName: mysql-pvc\nEOF"},
+  {"input":"show status of all PersistentVolumeClaims","output":"kubectl get pvc"},
+  {"input":"delete the PersistentVolumeClaim named mysql-pvc","output":"kubectl delete pvc mysql-pvc"},
+  {"input":"create a namespace called dev","output":"kubectl create namespace dev"},
+  {"input":"list all namespaces","output":"kubectl get namespaces"},
+  {"input":"deploy nginx-deployment in namespace dev","output":"kubectl create deployment nginx-dev --image=nginx --namespace=dev"},
+  {"input":"set the default namespace to dev","output":"kubectl config set-context --current --namespace=dev"},
+  {"input":"delete the namespace dev","output":"kubectl delete namespace dev"},
+  {"input":"taint node worker-node key=value:NoSchedule","output":"kubectl taint nodes worker-node key=value:NoSchedule"},
+  {"input":"remove the taint key=value:NoSchedule from worker-node","output":"kubectl taint nodes worker-node key=value:NoSchedule-"},
+  {"input":"label node worker-node with disktype=ssd","output":"kubectl label nodes worker-node disktype=ssd"},
+  {"input":"show all nodes with their labels","output":"kubectl get nodes --show-labels"},
+  {"input":"schedule a pod named nginx-pod on nodes labeled disktype=ssd","output":"kubectl apply -f - <<EOF\napiVersion: v1\nkind: Pod\nmetadata:\n  name: nginx-pod\nspec:\n  containers:\n  - name: nginx\n    image: nginx\n  nodeSelector:\n    disktype: ssd\nEOF"},
+  {"input":"create a ResourceQuota named mem-cpu-quota in namespace dev limiting pods to 10 and cpu to 10","output":"kubectl apply -f - <<EOF\napiVersion: v1\nkind: ResourceQuota\nmetadata:\n  name: mem-cpu-quota\n  namespace: dev\nspec:\n  hard:\n    pods: \"10\"\n    requests.cpu: \"4\"\n    requests.memory: 4Gi\n    limits.cpu: \"10\"\n    limits.memory: 10Gi\nEOF"},
+  {"input":"view ResourceQuotas in namespace dev","output":"kubectl get resourcequota --namespace=dev"},
+  {"input":"create a LimitRange named cpu-mem-limit-range in namespace dev","output":"kubectl apply -f - <<EOF\napiVersion: v1\nkind: LimitRange\nmetadata:\n  name: cpu-mem-limit-range\n  namespace: dev\nspec:\n  limits:\n  - default:\n      cpu: 500m\n      memory: 512Mi\n    defaultRequest:\n      cpu: 200m\n      memory: 256Mi\n    type: Container\nEOF"},
+  {"input":"list LimitRanges in namespace dev","output":"kubectl get limitrange --namespace=dev"},
+  {"input":"add the bitnami Helm repo","output":"helm repo add bitnami https://charts.bitnami.com/bitnami"},
+  {"input":"update all Helm repositories","output":"helm repo update"},
+  {"input":"install nginx via Helm as release my-nginx","output":"helm install my-nginx bitnami/nginx"},
+  {"input":"list all Helm releases","output":"helm list"},
+  {"input":"uninstall the Helm release my-nginx","output":"helm uninstall my-nginx"},
+  {"input":"install MySQL in namespace wordpress via Helm as my-mysql","output":"helm install my-mysql bitnami/mysql --namespace wordpress"},
+  {"input":"install WordPress in namespace wordpress via Helm as my-wordpress","output":"helm install my-wordpress bitnami/wordpress --namespace wordpress"},
+  {"input":"get the service details for my-wordpress in namespace wordpress","output":"kubectl get svc --namespace wordpress my-wordpress"},
+  {"input":"uninstall the Helm release my-wordpress","output":"helm uninstall my-wordpress --namespace wordpress"},
+  {"input":"uninstall the Helm release my-mysql","output":"helm uninstall my-mysql --namespace wordpress"},
+  {"input":"delete the namespace wordpress","output":"kubectl delete namespace wordpress"},
+  {"input":"create a Secret named mysql-secret in namespace wordpress with root password password","output":"kubectl create secret generic mysql-secret --namespace wordpress --from-literal=mysql-root-password=password"},
+  {"input":"create a ConfigMap named wordpress-config in namespace wordpress","output":"kubectl create configmap wordpress-config --namespace wordpress --from-literal=WORDPRESS_DB_HOST=mysql --from-literal=WORDPRESS_DB_NAME=wordpress --from-literal=WORDPRESS_DB_USER=user"},
+  {"input":"patch service nginx-service to use version green","output":"kubectl patch service nginx-service -p '{\"spec\":{\"selector\":{\"version\":\"green\"}}}'"},
+  {"input":"enable the ingress addon in Minikube","output":"minikube addons enable ingress"},
+  {"input":"create an Ingress resource named nginx-ingress for host nginx.example.com","output":"kubectl apply -f - <<EOF\napiVersion: networking.k8s.io/v1\nkind: Ingress\nmetadata:\n  name: nginx-ingress\nspec:\n  rules:\n  - host: nginx.example.com\n    http:\n      paths:\n      - path: /\n        pathType: Prefix\n        backend:\n          service:\n            name: nginx-service\n            port:\n              number: 80\nEOF"},
+  {"input":"create a ServiceAccount named dev-user in namespace dev","output":"kubectl create serviceaccount dev-user --namespace dev"},
+  {"input":"create a Role named pod-reader in namespace dev allowing get,list,watch on pods","output":"kubectl apply -f - <<EOF\napiVersion: rbac.authorization.k8s.io/v1\nkind: Role\nmetadata:\n  name: pod-reader\n  namespace: dev\nrules:\n- apiGroups: [\"\"]\n  resources: [\"pods\"]\n  verbs: [\"get\",\"list\",\"watch\"]\nEOF"},
+  {"input":"bind the pod-reader Role to dev-user via RoleBinding read-pods in dev","output":"kubectl apply -f - <<EOF\napiVersion: rbac.authorization.k8s.io/v1\nkind: RoleBinding\nmetadata:\n  name: read-pods\n  namespace: dev\nsubjects:\n- kind: ServiceAccount\n  name: dev-user\n  namespace: dev\nroleRef:\n  kind: Role\n  name: pod-reader\n  apiGroup: rbac.authorization.k8s.io\nEOF"},
+  {"input":"test dev-user's rights by running kubectl get pods in a Pod","output":"kubectl apply -f - <<EOF\napiVersion: v1\nkind: Pod\nmetadata:\n  name: rbac-test\n  namespace: dev\nspec:\n  serviceAccountName: dev-user\n  containers:\n  - name: kubectl\n    image: bitnami/kubectl:latest\n    command: [\"sh\",\"-c\",\"kubectl get pods\"]\nEOF"},
+  {"input":"label node worker-node with disktype=spinning","output":"kubectl label nodes worker-node disktype=spinning"},
+  {"input":"create a deployment nginx-anti-affinity with podAntiAffinity on app=nginx","output":"kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: nginx-anti-affinity\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: nginx-anti-affinity\n  template:\n    metadata:\n      labels:\n        app: nginx-anti-affinity\n    spec:\n      affinity:\n        podAntiAffinity:\n          requiredDuringSchedulingIgnoredDuringExecution:\n          - labelSelector:\n              matchExpressions:\n              - key: app\n                operator: In\n                values:\n                - nginx-anti-affinity\n            topologyKey: \"kubernetes.io/hostname\"\n      containers:\n      - name: nginx\n        image: nginx\n        ports:\n        - containerPort: 80\nEOF"},
+  {"input":"create a deployment nginx-node-anti-affinity avoiding nodes with disktype=spinning","output":"kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: nginx-node-anti-affinity\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: nginx-node-anti-affinity\n  template:\n    metadata:\n      labels:\n        app: nginx-node-anti-affinity\n    spec:\n      affinity:\n        nodeAffinity:\n          requiredDuringSchedulingIgnoredDuringExecution:\n            nodeSelectorTerms:\n            - matchExpressions:\n              - key: disktype\n                operator: NotIn\n                values:\n                - spinning\n      containers:\n      - name: nginx\n        image: nginx\n        ports:\n        - containerPort: 80\nEOF"},
+  {"input":"create a deployment nginx-affinity on nodes with disktype=ssd","output":"kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: nginx-affinity\nspec:\n  replicas: 1\n  selector:\n    matchLabels:\n      app: nginx-affinity\n  template:\n    metadata:\n      labels:\n        app: nginx-affinity\n    spec:\n      affinity:\n        nodeAffinity:\n          requiredDuringSchedulingIgnoredDuringExecution:\n            nodeSelectorTerms:\n            - matchExpressions:\n              - key: disktype\n                operator: In\n                values:\n                - ssd\n      containers:\n      - name: nginx\n        image: nginx\n        ports:\n        - containerPort: 80\nEOF"},
+  {"input":"create a pod existing-pod labeled frontend","output":"kubectl apply -f - <<EOF\napiVersion: v1\nkind: Pod\nmetadata:\n  name: existing-pod\n  labels:\n    app: frontend\nspec:\n  containers:\n  - name: nginx\n    image: nginx\nEOF"},
+  {"input":"create a deployment nginx-pod-affinity co‑located with existing-pod","output":"kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: nginx-pod-affinity\nspec:\n  replicas: 1\n  selector:\n    matchLabels:\n      app: nginx-pod-affinity\n  template:\n    metadata:\n      labels:\n        app: nginx-pod-affinity\n    spec:\n      affinity:\n        podAffinity:\n          requiredDuringSchedulingIgnoredDuringExecution:\n          - labelSelector:\n              matchExpressions:\n              - key: app\n                operator: In\n                values:\n                - frontend\n            topologyKey: \"kubernetes.io/hostname\"\n      containers:\n      - name: nginx\n        image: nginx\n        ports:\n        - containerPort: 80\nEOF"},
+  {"input":"create a ResourceQuota that blocks creating more than 2 pods in dev","output":"kubectl apply -f - <<EOF\napiVersion: v1\nkind: ResourceQuota\nmetadata:\n  name: dev-pod-limit\n  namespace: dev\nspec:\n  hard:\n    pods: \"2\"\nEOF"},
+  {"input":"attempt to deploy 3 replicas of nginx-overquota in dev","output":"kubectl apply -f - <<EOF\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: nginx-overquota\n  namespace: dev\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: nginx-overquota\n  template:\n    metadata:\n      labels:\n        app: nginx-overquota\n    spec:\n      containers:\n      - name: nginx\n        image: nginx\n        resources:\n          requests:\n            cpu: \"500m\"\n            memory: \"512Mi\"\n          limits:\n            cpu: \"1\"\n            memory: \"1Gi\"\nEOF"},
+  {"input":"switch traffic from blue to green by updating service nginx-service selector","output":"kubectl patch service nginx-service -p '{\"spec\":{\"selector\":{\"version\":\"green\"}}}'"},
+  {"input":"install nginx ingress controller via Minikube addons","output":"minikube addons enable ingress"},
+  {"input":"declare an Ingress named web-ingress for host example.com","output":"kubectl apply -f - <<EOF\napiVersion: networking.k8s.io/v1\nkind: Ingress\nmetadata:\n  name: web-ingress\nspec:\n  rules:\n  - host: example.com\n    http:\n      paths:\n      - path: /\n        pathType: Prefix\n        backend:\n          service:\n            name: web-service\n            port:\n              number: 80\nEOF"},
+  {"input":"describe node worker-node","output":"kubectl describe node worker-node"},
+  {"input":"get all events in the cluster","output":"kubectl get events"},
+  {"input":"rollout status of deployment nginx-blue","output":"kubectl rollout status deployment/nginx-blue"},
+  {"input":"undo the last rollout of deployment nginx-blue","output":"kubectl rollout undo deployment/nginx-blue"},
+  {"input":"update the image of deployment nginx-blue to nginx:1.15","output":"kubectl set image deployment/nginx-blue nginx=nginx:1.15"},
+  {"input":"cordon the node worker-node","output":"kubectl cordon worker-node"},
+  {"input":"uncordon the node worker-node","output":"kubectl uncordon worker-node"},
+  {"input":"drain the node worker-node","output":"kubectl drain worker-node --ignore-daemonsets"},
+  {"input":"check if current user can list pods","output":"kubectl auth can-i list pods"},
+  {"input":"explain the fields of pods","output":"kubectl explain pods"},
+  {"input":"copy file from local file.txt to pod my-pod:/tmp/file.txt","output":"kubectl cp file.txt my-pod:/tmp/file.txt"},
+  {"input":"run an interactive shell in pod my-pod","output":"kubectl exec -it my-pod -- /bin/sh"},
+  {"input":"view logs of pod my-pod","output":"kubectl logs my-pod"},
+  {"input":"start a proxy to the Kubernetes API","output":"kubectl proxy"},
+  {"input":"apply a kustomization in directory ./overlays/dev","output":"kubectl apply -k overlays/dev"},
+  {"input":"generate the manifests from Kustomize in ./base","output":"kubectl kustomize base"}
+]
