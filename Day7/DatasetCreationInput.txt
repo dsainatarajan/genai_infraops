@@ -1,4 +1,4 @@
-🟢 Section 1: Deployments, Pods, and Services
+Section 1: Deployments, Pods, and Services
 1.	Check Cluster Nodes
 bash
 CopyEdit
@@ -60,7 +60,7 @@ kubectl delete deployment nginx-deployment
 Purpose: Removes the NGINX deployment.
 Expected Output: Confirmation of deletion.
 
-🟡 Section 2: Service Discovery and Networking
+ Section 2: Service Discovery and Networking
 11.	Create a Service
 bash
 CopyEdit
@@ -92,7 +92,7 @@ kubectl port-forward service/nginx-service 8080:80
 Purpose: Forwards port 80 of the service to localhost:8080.
 Expected Output: Forwarding confirmation; access via http://localhost:8080.
 
-🔵 Section 3: Persistent Volumes and Storage
+ Section 3: Persistent Volumes and Storage
 16.	Create PersistentVolume
 yaml
 CopyEdit
@@ -162,7 +162,7 @@ kubectl delete pvc mysql-pvc
 Purpose: Removes the persistent volume claim.
 Expected Output: Confirmation of deletion.
 
-🟣 Section 4: Namespaces and Resource Management
+ Section 4: Namespaces and Resource Management
 21.	Create Namespace
 bash
 CopyEdit
@@ -194,7 +194,7 @@ kubectl delete namespace dev
 Purpose: Removes the dev namespace and its resources.
 Expected Output: Namespace dev deleted.
 
-🟤 Section 5: Taints, Tolerations, and Node Labels
+ Section 5: Taints, Tolerations, and Node Labels
 26.	List Nodes
 bash
 CopyEdit
@@ -246,7 +246,7 @@ kubectl apply -f nginx-pod.yaml
 Purpose: Schedules the pod to a node labeled with disktype=ssd.
 Expected Output: Pod nginx-pod is created and scheduled on the appropriate node.
 
-🟠 Section 6: Resource Quotas and Limits
+ Section 6: Resource Quotas and Limits
 32.	Create Resource Quota
 Create a file quota.yaml:
 yaml
@@ -304,7 +304,7 @@ kubectl get limitrange --namespace=dev
 Purpose: Displays the limit ranges set in the dev namespace.OpenShift Documentation
 Expected Output: List of limit ranges with their default requests and limits.
 
-🔴 Section 7: Helm - Kubernetes Package Manager
+ Section 7: Helm - Kubernetes Package Manager
 36.	Install Helm
 Follow the official Helm installation guide for your operating system:
 Kubernetes
@@ -341,7 +341,7 @@ helm uninstall my-nginx
 Purpose: Removes the my-nginx release from the cluster.
 Expected Output: Release "my-nginx" uninstalled.
 
-🟢 Section 8: Deploying WordPress and MySQL with Persistent Volumes
+ Section 8: Deploying WordPress and MySQL with Persistent Volumes
 42.	Create Namespace for WordPress
 bash
 CopyEdit
@@ -399,7 +399,7 @@ These commands provide a comprehensive walkthrough of Kubernetes operations, fro
 
 Kubernetes setup to deploy WordPress and MySQL with service discovery, utilizing ConfigMaps and Secrets for configuration management.
 
-🗂️ 1. Namespace
+1. Namespace
 Creating a dedicated namespace to isolate resources:DevOpsCube
 yaml
 CopyEdit
@@ -412,7 +412,7 @@ bash
 CopyEdit
 kubectl apply -f namespace.yaml
 
-🔐 2. Secrets
+2. Secrets
 Storing sensitive data like database credentials securely:
 yaml
 CopyEdit
@@ -431,8 +431,8 @@ Apply with:
 bash
 CopyEdit
 kubectl apply -f mysql-secret.yaml
-________________________________________
-⚙️ 3. ConfigMaps
+
+ 3. ConfigMaps
 Defining non-sensitive configuration data:Clear Linux Project
 yaml
 CopyEdit
@@ -450,7 +450,7 @@ bash
 CopyEdit
 kubectl apply -f wordpress-config.yaml
 
-💾 4. Persistent Volume Claims
+ 4. Persistent Volume Claims
 Requesting persistent storage for MySQL and WordPress:
 MySQL PVC:
 yaml
@@ -486,7 +486,7 @@ CopyEdit
 kubectl apply -f mysql-pvc.yaml
 kubectl apply -f wordpress-pvc.yaml
 
-🐬 5. MySQL Deployment and Service
+ 5. MySQL Deployment and Service
 Deployment:
 yaml
 CopyEdit
@@ -559,7 +559,7 @@ CopyEdit
 kubectl apply -f mysql-deployment.yaml
 kubectl apply -f mysql-service.yaml
 
-📝 6. WordPress Deployment and Service
+ 6. WordPress Deployment and Service
 Deployment:
 yaml
 CopyEdit
@@ -635,10 +635,10 @@ CopyEdit
 kubectl apply -f wordpress-deployment.yaml
 kubectl apply -f wordpress-service.yaml
 
-🔍 7. Service Discovery
+ 7. Service Discovery
 In Kubernetes, services are discoverable within the cluster by their DNS names. The WordPress pod uses the WORDPRESS_DB_HOST environment variable, set to mysql, to connect to the MySQL service. Kubernetes' internal DNS resolves this to the appropriate service IP, facilitating seamless communication between WordPress and MySQL.
 
-🚀 8. Accessing WordPress
+ 8. Accessing WordPress
 To access the WordPress site from your browser:
 1.	Retrieve the Node IP:
 bash
@@ -737,7 +737,7 @@ spec:
         ports:
         - containerPort: 80
 Explanation: This deployment ensures that the pod is scheduled on the same node as the existing pod labeled app=frontend.
-________________________________________
+
 3. Namespaces and Resource Quotas
 Objective: Demonstrate how resource quotas can restrict resource usage within a namespace.Matthew Palmer+12Medium+12Kubernetes+12
 Step 1: Create a namespace.
