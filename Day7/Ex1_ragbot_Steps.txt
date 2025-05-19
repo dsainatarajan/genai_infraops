@@ -1,0 +1,15 @@
+Steps:
+# Install the dependencies in the anaconda prompt by running below command
+conda create -n ragbot
+pip install langchain==0.0.332  faiss-cpu==1.7.4 nbformat
+pip install tiktoken 
+# Download the data file DatasetCreationInput.txt and the code files
+# Replace the API key at the start of the code in the file Ex1_ragbot.py and in Ex1.2_normal_bot.py
+
+python Ex1_ragbot.py
+
+# On a different terminal, open anaconda terminal, run the following
+conda activate ragbot
+
+python Ex1.2_normal_bot.py
+# Check the anwers for the question from the ragbot and the normal bot
