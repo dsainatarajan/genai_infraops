@@ -1,0 +1,25 @@
+Day6:
+Langchain -> RAG, Agents, Langgraph	-> Self correcting coder
+Kubernetes Automation with AI Powered tools
+AI-powered Monitoring and Incident Response
+Monitoring Tools AI Integration options
+Automation of Incident Response Tools
+Predictive Analytics for Infrastructure Operations 
+Hands-on: Integrating AI-powered monitoring tools with automation scripts
+
+
+Every graph in the langgraph will receive a input state, it will update the state and return the updated state object
+Pydantic -> Used to format the output of the AI model as per our requirements
+
+
+
+Ex1_pydantic_upgraded.py, run the file in google colab
+
+Break from 4 PM to 4.30 PM IST!
+
+1. Get the user prompt to perform an action on kubernetes
+2. Find a code solution as python code using kubernetes sdk
+3. Run the code to execute the operation on the kubernetes cluster and if there is any issue, regenerate the code and re-execute in a loop until success
+
+Steps_Ex2_Langgraph_Kubernetes.txt
+copy 

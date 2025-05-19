@@ -1,0 +1,97 @@
+Day4:
+Accelerating Devops with Generative AI
+Containerization using Docker, AI Toosl for docker containerization
+Handson: Analysis of Image build process, Automation of Image buid using AI
+Handson: Optimization of image size and image layers, AI Tools for Docker management
+Handson: AI Solutions for Jenkins and GitLab CI/CD Pipelines
+Kubernetes Automation with AI Powered tools
+Handson: Kubegpt for Chatgpt Integration with Kubernetes
+Handson: Kubernetes Python API
+Handson: Building a Self correcting GenAI Coder implementation to do automation of Kubernetes Tasks
+
+
+
+1. Stop the docker compose running the prometheus, grafana cluster
+cd monitoringdemo
+docker-compose stop
+# Launch a new Terminal with Administrator Privilleges
+Start -> cmd -> Right Click -> Run As Administrator
+minikube start
+minikube status
+kubectl create deployment dep1 --image httpd --replicas 2
+kubectl get pods
+kubectl expose deployment dep1 --port 80 --type NodePort
+kubectl get svc
+minikube service dep1 --url
+# Browser: URL 
+# Response: It Works!
+
+
+# Day4\Ex1_StopPromtheus_StartMInikube.txt
+Once finished, please enter done in the chat
+
+Working Kubernetes cluster
+	Kubernetes automation for GenAI  -> Kubegpt
+	
+kubectl get svc
+kubegpt "list the service in kubernetes"
+kubectl create deployment dep1 --image httpd --replicas 2
+kubegpt "create a deployment in kubernetes with httpd image with 2 replicas"
+
+kubegpt:
+	1. Chatgpt API Key
+	2. kubectl configuration, kubernetes context should be set
+
+https://pypi.org/project/kubegpt/
+pip install kubegpt
+linux:
+export OPENAI_API_KEY=xxxx
+Windows:
+set OPENAI_API_KEY=xxxx
+
+Break from 4.00 PM to 4.30 PM IST!
+
+
+
+
+https://www.velotio.com/engineering-blog/kubernetes-python-client
+
+
+pip install kubegpt
+set OPENAI_API_KEY=REPLACE_YOUR_KEY_HERE
+pip install -U langchain-community
+pip install langchain-experimental
+set allow_dangerous_tools=True
+kubegpt "What kubernetes context am I using?"
+kubegpt "create a deployment named dep1 with httpd image and 2 replicas"
+
+
+
+# Open the anaconda prompt
+
+pip install kubernetes
+python Ex3_Kubernetes_python.py
+
+
+
+Python:
+GenAI:
+	i) Lagchain
+		1. Langchain Agents
+		2. Langgraph
+		3. Langsmith -> Monitoring the predictions in production
+	ii) LlamaIndex
+	
+
+Python SDK -> Kubernetes
+
+Langgraph	-> Loops => Self correcting Loops
+
+python -> terminal to the host machine
+python -> kubernetes accessed through the SDKs
+Python -> Langchain & Langgraph
+
+
+Kubernetes, Langchain, Langgraph => self correcting system
+Advanced Prompt Engineering for DevOps
+RAG

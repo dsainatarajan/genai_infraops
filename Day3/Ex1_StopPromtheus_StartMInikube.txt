@@ -1,0 +1,15 @@
+1. Stop the docker compose running the prometheus, grafana cluster
+cd monitoringdemo
+docker-compose stop
+# Launch a new Terminal with Administrator Privilleges
+Start -> cmd -> Right Click -> Run As Administrator
+minikube start
+minikube status
+kubectl create deployment dep1 --image httpd --replicas 2
+kubectl get pods
+kubectl expose deployment dep1 --port 80 --type NodePort
+kubectl get svc
+minikube service dep1 --url
+# Browser: URL 
+# Response: It Works!
+

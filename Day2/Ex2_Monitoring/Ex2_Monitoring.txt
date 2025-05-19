@@ -1,0 +1,36 @@
+# Create a new folder in VS code named monitoringdemo in the explorer
+# Create a new file in the monitoringdemo folder with name docker-compose.yaml
+#Open the copilot by Ctrl+I Command
+Promot: Create the docker-compose content to launch 3 containers as given below
+	1. node exporter that will expose port 9100 with metrics
+	2. launch prometheus container from bitnami/prometheus image, expose port 9090, load a volume as prometheus.yml mapped to the job file in the container
+	3. Launch Grafana container 
+# Select the suggestion by copilot & Save the file(Ctrl+S)
+# Create a new file named prometheus.yml in the folder monitoringdemo manually
+Promot: Give the job specification for prometheus to scrape the node-exporter as per the docker-compose file definition
+# Select the suggestion by copilot & Save the file(Ctrl+S)
+#Open the terminal on the VS Code & run the below command to lauch docker-compose
+
+docker-compose up
+# Wait for the containers to download and launch
+# Browser: localhost:9100
+
+# Browser: localhost:9090
+	i) Search for CPU and open the graph
+	ii) Menu -> Status -> Target Health
+		We should see the node-exporter as UP status
+
+# Browser: localhost:3000
+	i) Username: admin
+	ii) Password: admin
+	iii) Skip the password change option
+	iv) Click on the connections menu on the left pane
+	v) Search -> Prometheus   -> Select the Prometheus box -> Click "Add new datasource" button
+	vi) Scroll down & in the Prometheus Server Url give the value as http://prometheus:9090
+	vii) Scroll down and click test & save
+		We should see successfully tested prometheus connection
+	viii) Dashboard menu on the left pane -> Click New button -> Import
+	ix) ID: 1860 -> Click Load, Select the Prometheus Data source below and click Import
+	x) Watch the dashboard updating with system monitoring details
+
+	

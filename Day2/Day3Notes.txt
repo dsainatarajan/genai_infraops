@@ -1,0 +1,55 @@
+Day3:
+Handson: Automating common infrastructure operations through AI
+Simple Prompt templates for generating Day to Day Infrastructure operations
+Introduction to Automation with Python, Bash Scripts
+AI based code generation for creating scripts for Automation
+
+Automation with Ansible and Python
+Automating Infrastructure Tasks with Ansible, Using GenAI to automate Ansible operations
+Hands-on: Automating infrastructure tasks using Ansible and Python using GenAI
+
+Introduction to Advanced Python for Automation
+Hands-on: GenAI power automated deployment script generation, execution, testing the deployment and self correction to fix deployment issues
+Hands-on: Setting up monitoring tools (e.g., Prometheus, Grafana) automation with GenAI
+
+
+Github Copilot: GenAI solution for code generation
+
+def greatestOfThreeNumbers(a,b):
+	return a if a>b else b
+
+-> fix => copilot can guess what to do
+
+def greatest(a,b):
+	return a if a>b else b
+=> fix
+
+https://github.com/dsainatarajan/springemployeecrud
+
+Build the springapp from the github code link given in the steps 
+Dockerimage_build_springboot.txt
+Enter done in the chat once finished
+
+
+Break from 4.04 to 4.34 PM IST!
+
+Please continue and complete the exercise, enter done in the chat once finished
+
+Docker
+Docker-compose		-> Multi container automation
+Monitoring:
+	1. Node Exporter	-> Collects the system metrics and exposes the metrics on a port => 9100
+		CPU, RAM, DiskIO, NetworkIO, Processes
+	2. Prometheus		-> 
+		i) Monitoring Data Retrieval registered endpoint 
+		ii)	Storage of the monitoring data as time series
+		iii) Query Engine
+	3. Grafana		-> Dashboard(Web UI)
+	
+
+Onedrive: Day3\Ex2_Monitoring\Ex2_Monitoring.txt
+Ex2 -> Building a monitoring stack in docker compose
+
+
+
+

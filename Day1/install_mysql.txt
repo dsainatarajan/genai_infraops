@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Update package list and upgrade existing packages
+apt-get update
+apt-get upgrade -y
+
+# Fix broken dependencies
+apt-get install -f -y
+
+# Install required dependencies manually
+apt-get install -y perl-base netbase --allow-downgrades
+
+# Install MySQL Server
+DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
+
+# Start MySQL service
+service mysql start
+
+# Print MySQL version to verify installation
+mysql --version

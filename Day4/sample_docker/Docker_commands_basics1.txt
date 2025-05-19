@@ -1,0 +1,19 @@
+# Start a new apache webserver container
+docker run --name web1 -d httpd
+# Get the current list of running containers
+docker ps
+# Get full descriptive details about the container
+docker inspect web1
+curl 172.17.0.2
+# Stop running container
+docker stop web1
+# web1 container will not be listed as it is no longer running
+docker ps
+# List all containers including stopped containers
+docker ps -a
+# Start a stopped container
+docker start web1
+# web1 container will be listed again as it is in running state
+docker ps
+# Will list the web1 container
+curl 172.17.0.2

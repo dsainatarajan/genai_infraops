@@ -1,0 +1,21 @@
+docker run --name web2 -d httpd
+docker ps
+docker stop web2
+docker ps -a
+# web2 container exists, but in exited(stopped) state
+docker rm web2
+# Above command will delete the container
+docker ps -a
+# web2 no longer exists, no traces of it will be there
+
+docker run --name web3 -d httpd
+docker ps
+
+docker rm web3
+# Command will fail to delete container with error, running container connect be deleted
+docker ps
+
+docker rm --force web3
+# Force delete the running container
+docker ps -a
+# web3 in no longer available, it is already deleted

@@ -1,0 +1,283 @@
+Day7:
+AI-powered Monitoring and Incident Response
+Monitoring Tools AI Integration options
+Automation of Incident Response Tools
+Predictive Analytics for Infrastructure Operations 
+Hands-on: Integrating AI-powered monitoring tools with automation scripts 
+Advanced AI Applications and Future Roadmap
+GenAI Powered DevOps tool options: Kubiya.ai as Advanced GenAI tool for automated workflows integration with Git/CI/K8s/Cloud/etc engineering platforms
+Handson: AI-powered Chatbots for Infrastructure Operations 
+Handson: Machine Learning for Anomaly Detection
+Handson: AI-driven Capacity Planning and Optimization
+
+
+Request all to fill the feedback. I will be waiting
+
+Agentic AI Functions
+
+Prometheus Grafana
+Pagerduty
+Datadog
+ELK		-> ML Based Anomaly Detection
+Kubiya
+
+Advanced Prompt Engineering
+
+
+ollama -> gpt compliant API
+
+
+Break from 4.05 PM to 4.35 PM IST!
+
+Cognitive Verifier Pattern
+I am going to ask a complex Generative AI based code generation task. When I ask a question, generate 10 additional questions to gather more relevant information on how to implement the solution. Once I have answered all of them, combine information with original question and give the full implementation
+
+How to implement a Agentic AI for Kubernetes using kubernetes python API, Langchain framework and langgraph
+
+
+Agent’s Core Responsibilities
+What specific Kubernetes operations or workflows should the agent automate or assist with ?
+Ans: scaling deployments, rolling updates, troubleshooting pods, auto healing
+
+Cluster Environment
+What type of Kubernetes cluster(s) will you target (on prem vs. cloud managed like GKE/EKS/AKS), and what version or API stability guarantees do you need?
+Ans: Just give solution for minikube cluster on version 1.35
+
+Authentication & Permissions
+How will the agent authenticate to the cluster and what RBAC permissions should it have? Will it use in‑cluster service accounts, kubeconfig files, or an external identity provider?
+Ans: local kubeconfig files
+
+LangChain Usage
+Which LangChain components do you plan to leverage (e.g., Agents, Chains, memory modules)? Do you need conversational context, tool invocation routing, or custom prompt templates for Kubernetes tasks?
+Ans: I want all the above suggested features of langchain
+
+LangGraph Integration
+How should LangGraph be used to model your workflows—do you need graph based orchestration of chain steps, visualization of state transitions, or dynamic graph updates at runtime?
+Ans: graph based orchestration of chain steps
+
+Input & Trigger Mechanisms
+How will users or systems invoke the agent (CLI, REST API, chat interface, event hooks)? Should it listen for Kubernetes events or external triggers (webhooks, message queues)?
+Ans: CLI
+
+Error Handling & Observability
+What logging, monitoring, and alerting requirements do you have? How should the agent report successes, failures, or action confirmations back to users or dashboards?
+Ans: Just print monitoring information on the cli
+
+Security & Compliance
+Are there any security policies, audit requirements, or compliance (e.g., network policies, secrets management) that the agent must enforce or respect?
+Ans: No
+
+Scalability & High Availability
+Do you expect the agent to run as a single instance or horizontally scale? Should it be deployed as a Deployment, StatefulSet, or CronJob, and what HA patterns are required?
+Ans: single instance, keep it simple
+
+Success Metrics & Feedback Loop
+How will you measure the agent’s effectiveness (e.g., reduced incident resolution time, number of automated fixes)? Do you need feedback loops for continuous learning or human-in-the-loop approvals?
+Ans: reduced incident resolution time, number of automated fixes, human-in-the-loop approvals will be nice to have
+
+
+
+
+Summary
+This solution provides a single Python CLI application that continuously monitors a local Minikube (v1.35) Kubernetes cluster, wraps core Kubernetes operations (scaling deployments, rolling updates, troubleshooting pod logs, and auto‑healing) as LangChain tools, orchestrates workflows via LangGraph, retains conversational context with LangChain memory, and presents a Typer‑based CLI interface. The agent authenticates using your local ~/.kube/config, prints real‑time monitoring info to the CLI, and supports human‑in‑the‑loop confirmations. 
+k8s-python.readthedocs.io
+GitHub
+
+Prerequisites
+Minikube v1.35 running locally:
+
+bash
+Copy
+Edit
+minikube start --kubernetes-version=v1.35.0
+GitHub
+
+Python 3.9+ and a virtual environment:
+
+bash
+Copy
+Edit
+python3 -m venv venv && source venv/bin/activate
+Install dependencies:
+
+bash
+Copy
+Edit
+pip install kubernetes langchain langgraph typer
+LangChain
+Typer
+
+Full Implementation (main.py)
+python
+Copy
+Edit
+#!/usr/bin/env python3
+import time
+import logging
+from typing import Any, Dict
+import typer
+from kubernetes import client, config, watch
+from langchain.agents import Tool, AgentExecutor, ConversationalAgent
+from langchain.memory import ConversationBufferMemory
+from langgraph import LanguageGraph, Node, Edge
+
+app = typer.Typer()
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s: %(message)s")
+
+# --- Kubernetes Operations ---  
+def scale_deployment(name: str, namespace: str, replicas: int) -> str:
+    """Scale a deployment to the specified replica count."""
+    config.load_kube_config()
+    api = client.AppsV1Api()
+    body = {'spec': {'replicas': replicas}}
+    api.patch_namespaced_deployment_scale(name, namespace, body)
+    logging.info(f"Scaled {namespace}/{name} → {replicas} replicas")
+    return f"Scaled {name} to {replicas}"
+
+def rolling_update(name: str, namespace: str, image: str) -> str:
+    """Perform a rolling update by setting a new container image."""
+    config.load_kube_config()
+    api = client.AppsV1Api()
+    body = {
+        "spec": {
+            "template": {
+                "spec": {
+                    "containers": [{"name": name, "image": image}]
+                }
+            }
+        }
+    }
+    api.patch_namespaced_deployment(name, namespace, body)
+    logging.info(f"Rolling update {namespace}/{name} → image {image}")
+    return f"Updated {name} to image {image}"
+
+def troubleshoot_pod(name: str, namespace: str) -> str:
+    """Stream pod logs until manual interruption."""
+    config.load_kube_config()
+    core = client.CoreV1Api()
+    w = watch.Watch()
+    logging.info(f"--- Streaming logs: {namespace}/{name} ---")
+    for line in w.stream(core.read_namespaced_pod_log, name=name, namespace=namespace):
+        print(line)
+    return f"Log stream ended for {name}"
+
+def auto_heal(namespace: str) -> str:
+    """Delete pods in CrashLoopBackOff to trigger re‑creation."""
+    config.load_kube_config()
+    core = client.CoreV1Api()
+    healed = []
+    pods = core.list_namespaced_pod(namespace).items
+    for pod in pods:
+        statuses = pod.status.container_statuses or []
+        for c in statuses:
+            if c.state.waiting and 'CrashLoopBackOff' in c.state.waiting.reason:
+                core.delete_namespaced_pod(pod.metadata.name, namespace)
+                healed.append(pod.metadata.name)
+                logging.info(f"Healed pod {pod.metadata.name}")
+    return f"Healed pods: {healed}"
+
+# --- LangChain Tools & Agent ---  
+tools = [
+    Tool(name="scale", func=scale_deployment, description="Scale a Kubernetes deployment"),  # :contentReference[oaicite:3]{index=3}
+    Tool(name="update", func=rolling_update, description="Perform a rolling deployment update"),  # :contentReference[oaicite:4]{index=4}
+    Tool(name="troubleshoot", func=troubleshoot_pod, description="Stream pod logs for debugging"),  # :contentReference[oaicite:5]{index=5}
+    Tool(name="heal", func=auto_heal, description="Auto‑heal CrashLoopBackOff pods"),  # :contentReference[oaicite:6]{index=6}
+]
+
+memory = ConversationBufferMemory()
+# Replace `your_llm` with an actual LLM instance, e.g., OpenAI or local model 
+agent = ConversationalAgent.from_llm_and_tools(llm=your_llm, tools=tools)  # :contentReference[oaicite:7]{index=7}
+executor = AgentExecutor.from_agent_and_tools(agent=agent, tools=tools, memory=memory, verbose=True)
+
+# --- LangGraph Workflow ---  
+graph = LanguageGraph()
+graph.add_node(Node(id="scale", func=scale_deployment))
+graph.add_node(Node(id="update", func=rolling_update))
+graph.add_node(Node(id="troubleshoot", func=troubleshoot_pod))
+graph.add_node(Node(id="heal", func=auto_heal))
+graph.add_edge(Edge("scale", "update"))
+graph.add_edge(Edge("update", "troubleshoot"))
+graph.add_edge(Edge("troubleshoot", "heal"))  # :contentReference[oaicite:8]{index=8}
+
+# --- Monitoring Loop ---  
+def monitor_cluster(namespace: str):
+    """Continuously watch for pod failures and auto-heal."""
+    config.load_kube_config()
+    core = client.CoreV1Api()
+    w = watch.Watch()
+    for event in w.stream(core.list_namespaced_pod, namespace=namespace):
+        pod = event['object']
+        # If CrashLoopBackOff, trigger auto-heal and log event
+        statuses = pod.status.container_statuses or []
+        for st in statuses:
+            if st.state.waiting and 'CrashLoopBackOff' in st.state.waiting.reason:
+                logging.warning(f"Detected CrashLoopBackOff in {pod.metadata.name}, healing...")
+                auto_heal(namespace)
+
+# --- CLI Commands ---  
+@app.command()
+def run(namespace: str = typer.Option("default", help="Kubernetes namespace")):
+    """
+    Launch the Agent CLI and start monitoring the cluster.
+    
+    - Prompts user for tasks (scale/update/troubleshoot/heal).  
+    - Continuously watches for CrashLoopBackOff to auto‑heal.
+    """
+    # Start background monitoring
+    typer.echo(f"Starting cluster monitor in namespace '{namespace}'...")
+    import threading
+    monitor_thread = threading.Thread(target=monitor_cluster, args=(namespace,), daemon=True)
+    monitor_thread.start()
+
+    # Interactive loop
+    while True:
+        cmd = typer.prompt("Enter your request (or 'exit')")
+        if cmd.lower() in ("exit", "quit"):
+            typer.echo("Goodbye!")
+            break
+        result = executor.run(cmd)
+        typer.echo(result)
+
+if __name__ == "__main__":
+    app()
+Usage
+Ensure Minikube is running:
+
+bash
+Copy
+Edit
+minikube status
+Run the application:
+
+bash
+Copy
+Edit
+python main.py run --namespace my-namespace
+At the prompt, enter commands such as:
+
+Scale frontend to 3 replicas
+
+Update backend to image my-app:v2
+
+Troubleshoot pod frontend-abc123
+
+Heal pods in default
+
+All actions and automatic healing events will be logged and printed to your CLI in real time.
+
+
+
+Prompt chaining with advanced prompts:
+I want to build a Agentic AI to work as a autonomous agent for Kuernetes monitoring and self healing system. Use SCAMPER technique and analyse possible solution design and give me the solution description
+
+Add human in the loop for the above design where ever possible and regenerate the solution again
+
+Now provide the whole python implementation for the same
+
+Use six thinking hats approach and analyse the total solution given above and give recommendations to improve the solution
+
+
+
+Kubiya.ai		-> Kubernetes based automation solution
+
+

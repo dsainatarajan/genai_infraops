@@ -1,0 +1,20 @@
+docker run --name apache1 -d httpd
+docker logs apache1
+docker inspect apache1 | grep IPAddress
+# Copy the containerIP & replace in the below command
+curl containerIP
+# ex. curl 172.17.0.3
+curl containerIP/page.html
+# ex. curl 172.17.0.3/page.html
+docker logs apache1
+docker stop apache1
+docker logs apache1
+docker inspect apache1
+
+docker start apache1
+docker ps
+curl containerIP
+# ex. curl 172.17.0.3
+curl containerIP/page.html
+# ex. curl 172.17.0.3/page.html
+docker logs apache1

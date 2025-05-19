@@ -1,0 +1,13 @@
+# In the vs code explorer, create a new folder named springcontainer
+# Createa new file named as Dockerfile
+Ctrl+I
+Write a Dockerfile script to build a java springboot container image from the public github repository URL https://github.com/dsainatarajan/springemployeecrud , use multistage build to make an optimized image. The final image should be on openjdk image with JRE 17 version
+# If required change the image and take of the JRE final image
+# Change the expose port to 8181
+# On the terminal in the VS Code
+cd springcontainer
+docker build -t springapp .
+docker images
+docker run -d -p 8181:8181 springapp
+# Browser: http://localhost:8181/employees
+

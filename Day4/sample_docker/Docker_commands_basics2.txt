@@ -1,0 +1,18 @@
+docker images
+docker pull ubuntu:18.04
+docker images
+docker run --name oscontr1 -it ubuntu:18.04 bash
+ps
+Ctrl+P+Q
+docker ps
+docker exec -it oscontr1 bash
+ps
+exit
+docker attach oscontr1
+ps
+exit
+docker ps
+docker ps -a
+CONTAINER ID   IMAGE     	STATUS         			NAMES
+a1c74a5ce40a   ubuntu:18.04 Exited (0) 19 seconds  hungry_babbage
+# Observe the container in exited start

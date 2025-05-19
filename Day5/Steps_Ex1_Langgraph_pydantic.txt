@@ -1,0 +1,5 @@
+# Steps
+# Open the anaconda prompt
+pip install -U langchain_community langchain-openai  langchain langgraph
+python Ex1_Langgraph_pydantic.py
+

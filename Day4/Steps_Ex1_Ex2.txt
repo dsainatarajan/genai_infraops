@@ -1,0 +1,22 @@
+Steps Ex1, Ex2:
+Download the Ex1_PythonKubernetesExtended.py from one drive Day5
+# In the anaconda prompt run the python script
+python Ex1_PythonKubernetesExtended.py
+kubectl get svc
+kubectl get pods
+kubectl get deployments
+
+# Ex2
+kubectl get pods
+# Copy one of the pod name, replace the value as given below
+Line: 154 -> REPLACE_POD_NAME_HERE => Copied POD ID
+
+python Ex2_PythonKubernetesLogsCommand.py
+
+kubectl logs "Copied POD ID"
+
+kubectl exec -it "Copied POD ID" -- bash
+ls /
+# The hello folder should be listed
+exit
+

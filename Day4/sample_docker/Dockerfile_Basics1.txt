@@ -1,0 +1,15 @@
+mkdir helloworld
+cd helloworld
+nano Dockerfile
+FROM ubuntu:18.04
+ENTRYPOINT ["echo","Hello World!"]
+
+
+Ctrl+O+Enter
+Ctrl+X
+docker build -t myhelloworld .
+docker images
+docker history myhelloworld
+docker run --name helloworld myhelloworld
+docker ps
+docker ps -a

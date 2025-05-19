@@ -1,0 +1,22 @@
+# Open VS Code the Labs
+# Create a new folder in the explorer -> Infra as folder name
+Infra
+# Create a new file with name install_mysql.sh
+install_mysql.sh
+
+# Open the copilot from the VS Code -> Open Copilot Chat
+
+# Write a prompt to generate mysql installation instruction inside a ubuntu docker container
+A ubuntu container is created with command given below
+docker run --name ubuntumysql -it ubuntu bash
+Create a code with bash script named install_mysql.sh, this script should have installation instructions for installing mysql database in the above container
+
+# Run the commands in the output of copilot in the terminal of the ubuntu container
+
+# I made corrections given in  the file install_mysql.txt
+
+# Launch a new command prompt on the Lab VM
+Start -> cmd
+docker run --name ubuntumysql -it ubuntu bash
+# Run the commands from the install_mysql.sh file on this command prompt
+# Run all the commands without sudo

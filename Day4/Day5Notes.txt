@@ -1,0 +1,68 @@
+Day5:
+Python Kubernetes SDK more features
+Langchain -> RAG, Agents, Langgraph	-> Self correcting coder
+Kubernetes Automation with AI Powered tools
+Handson: Kubegpt for Chatgpt Integration with Kubernetes
+Handson: Kubernetes Python API
+GenAI in Python: Langchain, Langgraph
+
+Handson: Building a Self correcting GenAI Coder implementation to do automation of Kubernetes Tasks
+
+pip install kubernetes
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rss-site
+  labels:
+    app: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: front-end
+          image: nginx
+          ports:
+            - containerPort: 80
+
+OpenAI Getting started code samples:
+https://platform.openai.com/docs/quickstart?api-mode=responses
+
+
+Role:
+system		-> set the overall context of the conversation
+assistant	-> send the AI generated content as part of the conversation chain
+user		-> User prompt or question
+
+Break from 4 to 4.30 PM!
+
+
+Ex3_Batching.py
+
+Ex4_Prompt_composition_templates.py
+
+Ex5_OpenAI_langchain_rag.py  -> Ex5_OpenAIrag_Steps.txt
+
+Langgraph:
+	i) Graph
+		1. Node
+		2. Edges(Conditional, Unconditional)
+		3. Start
+		4. End
+	ii) Pydantic
+	
+
+Ex6_Langgraph_GettingStarted -> Graph
+pip install -U langgraph 
+pip install langchain-openai
+Note: If the pip install langchain-openai fails, run below command
+# use underscore
+pip install langchain_openai

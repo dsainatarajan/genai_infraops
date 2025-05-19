@@ -1,0 +1,18 @@
+kubectl top nodes
+minikube addons enable metrics-server
+# Wait for 5 minutes, metrics server has to finish initialization
+kubectl top nodes
+kubectl top pods
+
+kubectl delete deployment dep2
+
+python capacity_planning.py
+
+# Switch to the normal terminal/command prompt
+kubectl create deployment dep3 --image httpd --replicas 100
+
+kubectl get pods
+kubectl top nodes
+kubectl top pods
+
+# Check for the GPT4 response from the capacity_planning.py code

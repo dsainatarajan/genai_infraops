@@ -1,0 +1,11 @@
+# command prompt, create a deployment with some issue
+kubectl get pods
+kubectl get nodes
+kubectl create deployment dep2 --image httpdfs --replicas 2
+
+
+# On the Anaconda prompt run the Monitoring.py file
+
+python Monitoring.py
+# Stop the script after 2 iterations
+Ctrl+C

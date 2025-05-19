@@ -1,0 +1,230 @@
+Day2:
+Prompt Engineering -> More details
+AI-enabled Infrastructure Operations
+Handson: Automating common infrastructure operations through AI
+Simple Prompt templates for generating Day to Day Infrastructure operations
+Introduction to Automation with Python, Bash Scripts
+AI based code generation for creating scripts for Automation
+
+Automation with Ansible and Python
+Automating Infrastructure Tasks with Ansible, Using GenAI to automate Ansible operations
+Hands-on: Automating infrastructure tasks using Ansible and Python using GenAI
+
+
+
+
+What is your current knowledge level in mathematics and statistics, especially linear algebra, calculus, and probability?
+I am an engineering graduate, I have done 4 papers on maths at Undergraduate level
+Have you worked with any data-related tools or languages such as Python, SQL, Pandas, NumPy, or machine learning frameworks like TensorFlow or scikit-learn?
+Yes, I have worked with Python for infrastructure automation
+What is your main motivation for switching to Data Science? (e.g., passion, better salary, job demand, domain interest)
+better salary, job demand
+
+Labs:
+Docker, Kubernetes, Jenkins, VSCode, Github Copilot
+Readme.txt shortcut on the desktop
+	i) Github Copilot credentials
+	ii) Jenkins credentials
+
+
+Ex2: Ex2_InstallMySQL_UbuntuContainer.txt
+Please execute the steps in the labs VM provided and enter done in the chat once finished
+
+
+Break from 4 PM to 4.30 PM IST!
+
+Study Materials link - https://shorturl.at/kYJR8
+
+
+Any issue related to the lab please drop a mail to itsupport@iiht.com along with the user id details
+
+
+
+
+
+write a python program as a automation script to install mysql database on ubuntu 22.04 OS, ensure the database can accept remote connections
+
+
+ChatGPT said:
+Here is a Python automation script to install MySQL on Ubuntu 22.04 and configure it to accept remote connections.
+
+This script uses subprocess to run shell commands and modifies the MySQL configuration for remote access.
+
+⚠️ Requirements:
+Must be run with root/sudo privileges
+
+MySQL will be installed via apt
+
+Assumes ufw is the firewall manager
+
+✅ Python Script:
+python
+Copy
+Edit
+import subprocess
+import os
+
+def run_cmd(cmd, check=True):
+    print(f"Running: {cmd}")
+    subprocess.run(cmd, shell=True, check=check)
+
+def install_mysql():
+    run_cmd("apt update")
+    run_cmd("DEBIAN_FRONTEND=noninteractive apt install -y mysql-server")
+
+def configure_mysql_for_remote():
+    # Bind to 0.0.0.0 in MySQL config to allow remote connections
+    config_file = "/etc/mysql/mysql.conf.d/mysqld.cnf"
+    
+    # Replace bind-address
+    run_cmd(f"sed -i 's/^bind-address.*/bind-address = 0.0.0.0/' {config_file}")
+    
+    # Restart MySQL to apply changes
+    run_cmd("systemctl restart mysql")
+
+def create_remote_user():
+    # Create user and grant privileges for remote access
+    # You can change 'remote_user' and 'secure_password' below
+    sql = (
+        "CREATE USER IF NOT EXISTS 'remote_user'@'%' IDENTIFIED BY 'secure_password';"
+        "GRANT ALL PRIVILEGES ON *.* TO 'remote_user'@'%' WITH GRANT OPTION;"
+        "FLUSH PRIVILEGES;"
+    )
+    run_cmd(f"mysql -u root -e \"{sql}\"")
+
+def configure_firewall():
+    # Open port 3306 for MySQL
+    run_cmd("ufw allow 3306")
+    run_cmd("ufw reload")
+
+def main():
+    install_mysql()
+    configure_mysql_for_remote()
+    create_remote_user()
+    configure_firewall()
+    print("✅ MySQL installed and configured for remote connections.")
+
+if __name__ == "__main__":
+    if os.geteuid() != 0:
+        print("❌ Please run this script as root (sudo).")
+    else:
+        main()
+🔐 Notes:
+The remote MySQL user is remote_user with password secure_password. Change them to strong credentials.
+
+Make sure your cloud provider (AWS/GCP/Azure) allows port 3306 in its security groups if you're connecting from outside.
+
+You may also want to set up SSL and IP whitelisting for production use.
+
+Would you like a version using Ansible, Shell script, or Docker instead?
+
+
+
+
+
+
+
+You said:
+In my system , I want to install python and run the above command. Give me the steps
+
+
+ChatGPT said:
+To install Python and run the above script on your system (Ubuntu 22.04), follow these steps:
+
+Step 1: Install Python
+Ubuntu 22.04 comes with Python 3 pre-installed, but you can verify the installation and install it if needed.
+
+Check if Python is already installed:
+Open the terminal and run:
+
+bash
+Copy
+Edit
+python3 --version
+If it returns the Python version, it's already installed.
+
+Install Python if not installed:
+If Python is not installed or you want to ensure the latest version, run:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install python3 python3-pip
+Step 2: Install subprocess module
+subprocess is part of the standard library, so you don’t need to install it separately. It is available by default with Python.
+
+Step 3: Install MySQL Database
+You need to install MySQL server and configure it using the Python script. To do that:
+
+Ensure that you are running as root/sudo:
+Since installing MySQL and modifying system configurations requires root privileges, you'll need to run the script as a superuser.
+
+Run the Python Script:
+Save the Python script you received (let's say as install_mysql.py).
+
+Execute the Python Script:
+Open a terminal and navigate to the directory where install_mysql.py is saved, then run:
+
+bash
+Copy
+Edit
+sudo python3 install_mysql.py
+This will:
+
+Install MySQL server
+
+Modify MySQL configurations to allow remote connections
+
+Create a user for remote access
+
+Open the necessary ports in the firewall
+
+Step 4: Verify MySQL Installation
+After the script runs successfully, you can verify if MySQL is installed and running:
+
+Check MySQL status:
+
+bash
+Copy
+Edit
+sudo systemctl status mysql
+Test remote access:
+Try connecting to the MySQL server remotely using a MySQL client. Run:
+
+bash
+Copy
+Edit
+mysql -h <mysql-server-ip> -u remote_user -p
+(Replace <mysql-server-ip> with the IP address of your MySQL server.)
+
+Step 5: Firewall Configuration (Optional)
+If you're using a firewall (like ufw), make sure port 3306 is open for remote connections:
+
+bash
+Copy
+Edit
+sudo ufw allow 3306
+sudo ufw reload
+Step 6: Troubleshooting
+If the script encounters any issues:
+
+Ensure that the server is accessible via IP.
+
+Double-check MySQL configuration for remote access (bind-address = 0.0.0.0).
+
+Check MySQL logs for any errors (/var/log/mysql/error.log).
+
+Let me know if you need help with a specific step or if you face any issues!
+
+Copilot:
+1. Generate code
+2. Generate Comments
+3. Generate bash commands
+4. Use it as a learning tool, generate tutorials
+5. Debugging 
+
+
+
+
+

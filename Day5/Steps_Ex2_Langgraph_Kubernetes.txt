@@ -1,0 +1,14 @@
+conda create -n devopsgenainew
+conda activate devopsgenainew
+pip install -U langchain_community langchain-openai langchain-anthropic langchain langgraph kubernetes
+# copy both Ex2_Langgraph_kubernetes.py and python_kubernetes_extended_ref.py into the documents folder
+# cd into the documents folder
+
+minikube status
+
+set OPENAI_API_KEY=REPLACE_YOUR_KEY_HERE
+
+python Ex2_Langgraph_kubernetes.py
+kubectl get pods
+# The deployment dep1 should be listed
+kubectl get deployments
