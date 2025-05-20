@@ -1,0 +1,141 @@
+Plan ID: PP-001
+Name: Prepaid Basic 1GB
+Category: Prepaid
+Price (USD/month): 5.00
+Data: 1 GB
+Voice: 100 minutes
+SMS: 100
+Validity: 28 days
+Features: Rollover data; Free caller tune
+
+---
+
+Plan ID: PP-002
+Name: Prepaid Unlimited Lite
+Category: Prepaid
+Price (USD/month): 15.00
+Data: 5 GB
+Voice: Unlimited
+SMS: 500
+Validity: 30 days
+Features: Night unlimited data (12 am–6 am); Caller tune
+
+---
+
+Plan ID: PO-101
+Name: Postpaid Essential 10GB
+Category: Postpaid
+Price (USD/month): 25.00
+Data: 10 GB
+Voice: Unlimited
+SMS: Unlimited
+Validity: 30 days
+Features: Family addon at $5/mo; Free international texts
+
+---
+
+Plan ID: PO-102
+Name: Postpaid Premium 50GB
+Category: Postpaid
+Price (USD/month): 50.00
+Data: 50 GB
+Voice: Unlimited
+SMS: Unlimited
+Validity: 30 days
+Features: Hotspot 10 GB; Priority network access
+
+---
+
+Plan ID: BB-201
+Name: Home Broadband 100Mbps
+Category: Broadband
+Price (USD/month): 30.00
+Data: Unlimited
+Voice: 0
+SMS: 0
+Validity: 30 days
+Features: WiFi 6 router; Static IP option
+
+---
+
+Plan ID: BB-202
+Name: Home Broadband 250Mbps
+Category: Broadband
+Price (USD/month): 45.00
+Data: Unlimited
+Voice: 0
+SMS: 0
+Validity: 30 days
+Features: Dualband WiFi; Free installation
+
+---
+
+Plan ID: FM-301
+Name: Family Share 100GB
+Category: Family
+Price (USD/month): 80.00
+Data: 100 GB
+Voice: Unlimited
+SMS: Unlimited
+Validity: 30 days
+Features: Up to 4 SIMs; Parental controls
+
+---
+
+Plan ID: SMB-401
+Name: SMB Business Silver
+Category: Business
+Price (USD/month): 100.00
+Data: 200 GB
+Voice: Unlimited
+SMS: Unlimited
+Validity: 30 days
+Features: Dedicated account manager; API access
+
+---
+
+Plan ID: SMB-402
+Name: SMB Business Gold
+Category: Business
+Price (USD/month): 200.00
+Data: 500 GB
+Voice: Unlimited
+SMS: Unlimited
+Validity: 30 days
+Features: SLA 99.9% uptime; On site support
+
+---
+
+Plan ID: MVNO-501
+Name: Budget MVNO 3GB
+Category: MVNO
+Price (USD/month): 8.00
+Data: 3 GB
+Voice: 200 minutes
+SMS: 200
+Validity: 30 days
+Features: No credit check; Auto‑recharge
+
+---
+
+Plan ID: MT-601
+Name: Machine to Machine IoT
+Category: IoT
+Price (USD/month): 2.00
+Data: 0.1 GB
+Voice: 0
+SMS: 0
+Validity: 30 days
+Features: Static APN; SIM health monitoring
+
+---
+
+Plan ID: TL-701
+Name: Telehealth Data 20GB
+Category: Vertical‑Industry
+Price (USD/month): 20.00
+Data: 20 GB
+Voice: 0
+SMS: 0
+Validity: 30 days
+Features: Encrypted tunnel; QoS priority
